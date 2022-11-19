@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+ 
+  <title>Frontend Mentor | Interactive rating component</title>
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /*Style for main container */
+    .main-container{
+      background: hsl(216, 12%, 8%);
+      display: flex;
+      height: 100vh;
+      align-items: center;
+       justify-content: center;
+    }
+    /* Style for rating container*/
+    .rating-container{
+      background: hsl(213, 19%, 18%);
+     width: 280px;
+     padding: 1.2em;
+     border-radius: 20px;
+    }
+    /* Style for h1 inside rating container*/
+    .rating-container h1{
+      color: hsl(0, 0%, 100%);
+      padding: .5em 0;
+    }
+    /*Style for star container*/
+    .rating-container .star{
+     padding: 1em;
+     background: hsl(213, 19%, 28%);
+     width: 5px;
+     height: 5px;
+     border-radius: 50%;
+     display:flex ;
+     justify-content: center;
+     align-items: center;
+    }
+    /*Style for img inside star container*/
+    .rating-container .star img{
+    padding: 10px;
+    }
+    /* Style for paragraph inside rating container*/
+    .rating-container p{
+      color: hsl(217, 12%, 63%);
+     font-size: 15px;
+    }
+    /*container for numbers */
+    .number-container{
+      margin-top: 5px;
+      display: flex;
+      justify-content: space-between;
+     padding: 1em 0;
+    }
+    /* Style for the numbers */
+    .number-container .numbers{
+      background: hsl(213, 19%, 28%);
+      padding: 1.2em;
+      border-radius: 50%;
+      height: 5px;
+      width: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: hsl(217, 12%, 63%);
+    }
+    /* Style for selected numbers */
+    .number-container .selected{
+      background: hsl(217, 12%, 63%);
+      color: white;
+    }
+    /*Style for hovered numbers */
+    .number-container .numbers:hover{
+      background: hsl(25, 97%, 53%);
+      color: hsl(0, 0%, 100%);
+    }
+    /* Container for button */
+    .btn-container{
+      padding: 1em 0;
+    }
+    /*Style for button */
+    .btn{
+      display: block;
+      width: 100%;
+      padding: 1em;
+      outline: none;
+      border: none;
+      border-radius: 20px;
+      background:hsl(25, 97%, 53%);
+      color: white;
+      font-weight: 700;
+    }
+    .btn:hover{
+      background: white;
+     color:  hsl(25, 97%, 53%);
+    }
+    /*Style for thank you container*/
+    .thankyou-container{
+       background: hsl(213, 19%, 18%);
+     width: 280px;
+     padding: 1.7em;
+     border-radius: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    transition: 1s;
+    }
+    /* Style for img container inside thankyou container*/
+    .thankyou-container .eval{
+      display: flex;
+      justify-content: center;
+      padding: 1em;
+    
+    }
+    /*Style for img inside img container*/
+    .thankyou-container .eval img{
+      display:flex;
+      width: 70%;
+      flex-direction: column;
+      
+    }
+    /* Style for selected score by user */
+    .thankyou-container .score{
+      background: hsl(213, 19%, 28%);
+      color: hsl(25, 97%, 53%);
+     display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+    }
+    /* Style for score container */
+    .thankyou-container .score-container{
+      display: flex;
+      justify-content:center;
+      padding: 1em;
+    }
+    /*Style for h1 inside thankyou container */
+    .thankyou-container h1{
+     color: white;
+    }
+    /* Style for paragraph inside thankyou container*/
+    .thankyou-container p{
+      text-align: justify;
+      text-align-last: center;
+      font-size: 15px;
+      color: hsl(217, 12%, 63%);
+      padding: 1em 0;
+    }
+    /*Width for desktop view */
+     @media only screen and (min-width: 400px){
+       .container, .thankyou-container{
+         width: 327px;
+        
+       }
+     }
+ 
+  </style>
+</head>
+<body>
+  <div class="main-container">
+<div class="rating-container">
+  <div class="star"><img src="./images/icon-star.png"></div>
+ <h1>How did we do?</h1>
+<p>
+  Please let us know how we did with your support request. All feedback is appreciated 
+  to help us improve our offering!
+</p>
+  <div class="number-container">
+    <div class="numbers">1</div>
+    <div class="numbers">2</div>
+    <div class="numbers">3</div>
+    <div class="numbers">4</div>
+    <div class="numbers">5</div>
+  </div>
+<div class="btn-container">
+  <button class="btn">Submit</button>
+  </div>
+</div>
+
+ 
+  <div class="thankyou-container">
+
+<div class="eval"><img src="./images/illustration-thank-you.png"></div>
+  <div class="score-container"><span class="score"> You selected <span class="selected-score"></span>  out of 5</span></div>
+  <h1>Thank you!</h1>
+  <p>We appreciate you taking the time to give a rating. If you ever need more support, 
+  don’t hesitate to get in touch!</p>
+
+ </div>
+ 
+  <script>
+    let nums = document.querySelectorAll('.numbers');
+    let thank = document.querySelector('.thankyou-container');
+    let cont = document.querySelector('.rating-container');
+    let score = document.querySelector('.selected-score');
+    let submit = document.querySelector('.btn');
+    for(let x = 0; x < nums.length; x++){
+      nums[x].addEventListener('click', () => {
+       for(let a = 0; a < nums.length; a++){
+         nums[a].classList.remove('selected');
+       }
+       nums[x].classList.add("selected");
+      submit.addEventListener('click', () =>{
+        cont.style.display = "none";
+       thank.style.display = "flex";
+       score.innerHTML = nums[x].innerHTML;
+        
+      });
+       
+      });
+      
+    }
+  </script>
+</body>
+</html>
