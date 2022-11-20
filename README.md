@@ -1,6 +1,7 @@
 # interactive-rating-component-main
 
 https://github.com/angeldhawnn/interactive-rating-component-main.git
+https://angeldhawnn.github.io/interactive-rating-component-main/
 
 # Frontend Mentor - Interactive rating component solution
 
@@ -53,8 +54,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here]([https://your-solution-url.com](https://github.com/angeldhawnn/interactive-rating-component-main.git))
+- Live Site URL: [Add live site URL here]([https://your-live-site-url.com](https://angeldhawnn.github.io/interactive-rating-component-main/))
 
 ## My process
 
